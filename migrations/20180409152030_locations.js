@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
             table.text('description').notNullable();
             table.json('coordinates');
             table.string('address').notNullable();
+            table.string('distance');
             table.dateTime('created_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
         }),
 

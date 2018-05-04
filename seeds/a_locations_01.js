@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.7576196,
             longitude: -105.0069694
           },
-          address: '1644 Platte Street, Denver'
+          address: '1644 Platte Street, Denver',
+          distance: ''
         },
         {
           id: 2, 
@@ -21,7 +22,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.7526509,
             longitude: -105.00168500000001
           },
-          address: '1701 Wynkoop Street, Denver'
+          address: '1701 Wynkoop Street, Denver',
+          distance: ''
         },
         {
           id: 3, 
@@ -31,7 +33,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.7546184,
             longitude: -105.00139919999998
           },
-          address: '1701 Wewatta Street, Denver'
+          address: '1701 Wewatta Street, Denver',
+          distance: ''
         },
         {
           id: 4,
@@ -41,7 +44,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.7397941,
             longitude: -104.9566365
           },
-          address: '2526 E Colfax Ave, Denver'
+          address: '2526 E Colfax Ave, Denver',
+          distance: ''
         },
         {
           id: 5,
@@ -51,7 +55,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.74024120000001, 
             longitude: -104.96327659999997
           },
-          address: '2001 E Colfax Ave, Denver'
+          address: '2001 E Colfax Ave, Denver',
+          distance: ''
         },{
           id: 6,
           name: 'Denver Botanic Gardens',
@@ -60,7 +65,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.73204249999999,
             longitude: -104.9600977
           },
-          address: '1007 York Street, Denver'
+          address: '1007 York Street, Denver',
+          distance: ''
         },{
           id: 7,
           name: 'D Bar Denver',
@@ -69,7 +75,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.745915,
             longitude: -104.98137280000003
           },
-          address: '494 E 19th Ave, Denver'
+          address: '494 E 19th Ave, Denver',
+          distance: ''
         },{
           id: 8,
           name: 'MUTINY Information Cafe',
@@ -78,7 +85,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.71641779999999,
             longitude: -104.98714359999997
           },
-          address: '2 South Broadway, Denver'
+          address: '2 South Broadway, Denver',
+          distance: ''
         },{
           id: 9,
           name: 'Crema',
@@ -87,7 +95,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.7611263,
             longitude: -104.98171509999997
           },
-          address: '2862 Larimer Street, Denver'
+          address: '2862 Larimer Street, Denver',
+          distance: ''
         },{
           id: 10,
           name: 'Mockery Brewing',
@@ -96,7 +105,8 @@ exports.seed = function(knex, Promise) {
             latitude: 39.771248, 
             longitude: -104.97972970000001
           },
-          address: '3501 Delgany Street, Denver'
+          address: '3501 Delgany Street, Denver',
+          distance: ''
         }
       ]);
     }).then(() => {

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const queries = require('../queries');
+const google = require('../google');
 
 router.get("/", (req, res, next) => {
     queries.listPlaces().then(locations => {
@@ -32,6 +33,19 @@ router.delete("/:id", (req, res, next) => {
 router.put("/:id", (req, res, next) => {
     queries.updateCoords(req.params.id, req.body).then(location => {
         res.json({ location: location[0] });
+    }).catch(next);
+});
+
+router.get('/:lat/:long', (req, res, next) => {
+    let locations;
+    queries.listPlaces().then(places => {
+        locations = places;
+        return google.matrix(places, req.params.lat, req.params.long);
+    }).then(results => {
+        results.forEach((distance, i) => {
+            locations[i].distance = results[i];
+        });
+    res.json({ locations });
     }).catch(next);
 });
 
