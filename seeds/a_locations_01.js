@@ -6,8 +6,7 @@ exports.seed = function(knex, Promise) {
         {
           id: 1, 
           name: 'Galvanize',
-          thumbnail: 'img_location',
-          description: 'A large building that hosts gSchool classes downstairs and many small tech businesses on the other floors.',
+          description: 'A large building that hosts the Galvanize programming school downstairs and many tech businesses on the other floors.',
           coordinates: {
             latitude: '39.7576196',
             longitude: '-105.0069694'
@@ -17,7 +16,6 @@ exports.seed = function(knex, Promise) {
         {
           id: 2, 
           name: 'Union Station',
-          thumbnail: 'img_location',
           description: 'The main transit hub for downtown Denver.',
           coordinates: {
             latitude: '39.7526509',
@@ -28,7 +26,6 @@ exports.seed = function(knex, Promise) {
         {
           id: 3, 
           name: 'Whole Foods',
-          thumbnail: 'img_location',
           description: 'A large natural foods store near Union Station.',
           coordinates: {
             latitude: '39.7546184',
@@ -37,5 +34,7 @@ exports.seed = function(knex, Promise) {
           address: '1701 Wewatta Street'
         }
       ]);
+    }).then(() => {
+      return knex.raw('ALTER SEQUENCE locations_id_seq RESTART WITH 4;')
     });
 };

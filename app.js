@@ -2,65 +2,35 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const app = express();
-const port = parseInt(process.env.PORT || 3000);
+const port = parseInt(process.env.PORT || 5000);
 const cors = require('cors');
-const queries = require('./queries.js');
+
+require('dotenv').config();
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-app.get('/hello', (req, res) => {
-    res.json({ message: 'Hello World!'});
+const locations = require('./routes/locations');
+const comments = require('./routes/comments');
+
+app.use('/locations', locations);
+app.use('/comments', comments);
+
+app.use((req, res, next) => {
+    const err = new Error("Not Found");
+    err.status = 404;
+    next(err);
 });
 
-app.get('/locations/', (req, res) => {
-    queries
-        .list()
-        .then(records => {
-            res.json(records);
-        })
-        .catch(err => {
-            res.json({ error: err });
-        });
+app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({
+      message: err.message,
+      error: req.app.get("env") === "development" ? err.stack : {}
+    });
 });
-
-app.get('/comments/', (req, res) => {
-    queries
-        .listComments()
-        .then(records => {
-            res.json(records);
-        })
-        .catch(err => {
-            res.json({ error: err });
-        });
-});
-
-app.get('/locations/:id', (req, res) => {
-    queries
-        .read(req.params.id)
-        .then(records => {
-            res.json(records);
-        })
-        .catch(err => {
-            res.json({ error: err });
-        });
-});
-
-app.get('/comments/:id', (req, res) => {
-    queries
-        .readComments(req.params.id)
-        .then(records => {
-            res.json(records);
-        })
-        .catch(err => {
-            res.json({ error: err });
-        });
-});
-
 
 app.listen(port)
   .on('error',     console.error.bind(console))
   .on('listening', console.log.bind(console, 'Listening on ' + port));
-
-module.exports = app;

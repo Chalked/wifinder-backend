@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('locations', function(table) {
             table.increments('id').primary();
             table.string('name').notNullable();
-            table.string('thumbnail');
             table.text('description').notNullable();
             table.json('coordinates');
             table.string('address').notNullable();
@@ -16,9 +15,10 @@ exports.up = function(knex, Promise) {
             table.increments('id').primary();
             table.string('title').notNullable();
             table.text('body').notNullable();
-            table.integer('location_id')
+            table.integer('location_id').notNullable()
                 .references('id')
-                .inTable('locations');
+                .inTable('locations')
+                .onDelete('CASCADE');
             table.dateTime('posted_at').notNullable().defaultTo(knex.raw('CURRENT_TIMESTAMP'));
         })
     ])

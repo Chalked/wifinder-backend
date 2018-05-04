@@ -1,37 +1,37 @@
 const database = require('./database-connection');
 
 module.exports = {
-    list() {
+    listPlaces(){
         return database('locations').select();
     },
-    read(id) {
+    readPlace(id){
         return database('locations')
             .select()
-            .where("id", id)
+            .where('id', id)
             .first();
     },
-    create(location) {
+    createPlace(location){
         return database('locations')
             .insert(location)
             .returning('*')
             .then(record => record[0]);
     },
-    update(id, location) {
+    updateCoords(id, value){
         return database('locations')
-            .update(location)
-            .where("id", id)
+            .where('id', id)
+            .update('coordinates', value)
             .returning('*')
             .then(record => record[0]);
     },
-    delete(id) {
+    deletePlace(id){
         return database('locations')
             .delete()
-            .where("id", id);
+            .where('id', id);
     },
-    listComments() {
+    listComments(){
         return database('comments').select();
     },
-    readComments(id) {
+    readComments(id){
         return database('comments')
             .select()
             .where('location_id', id);
@@ -41,5 +41,17 @@ module.exports = {
             .insert(comment)
             .returning('*')
             .then(record => record[0]);
+    },
+    updateComment(id, value) {
+        return database('comments')
+            .where('id', id)
+            .update(comment, value)
+            .returning('*')
+            .then(record => record[0]);
+    },
+    deleteComment(id){
+        return database('comments')
+            .delete()
+            .where('id', id);
     }
 }

@@ -3,35 +3,35 @@ const router = express.Router();
 
 const queries = require('../queries');
 
-router.get("/", (request, response, next) => {
-    queries.list().then(locations => {
-        response.json({locations});
+router.get("/", (req, res, next) => {
+    queries.listPlaces().then(locations => {
+        res.json({ locations });
     }).catch(next);
 });
 
-router.get("/:id", (request, response, next) => {
-    queries.read(request.params.id).then(location => {
+router.get("/:id", (req, res, next) => {
+    queries.readPlace(req.params.id).then(location => {
         location
-            ? response.json({location})
-            : response.status(404).json({message: 'Not found'})
+            ? res.json({ location })
+            : res.status(404).json({ message: 'Not found' })
     }).catch(next);
 });
 
-router.post("/", (request, response, next) => {
-    queries.create(request.body).then(location => {
-        response.status(201).json({location: location});
+router.post("/", (req, res, next) => {
+    queries.createPlace(req.body).then(location => {
+        res.status(201).json({ location: location });
     }).catch(next);
 });
 
-router.delete("/:id", (request, response, next) => {
-    queries.delete(request.params.id).then(() => {
-        response.status(204).json({deleted: true});
+router.delete("/:id", (req, res, next) => {
+    queries.deletePlace(req.params.id).then(() => {
+        res.status(204).json({ deleted: true });
     }).catch(next);
 });
 
-router.put("/:id", (request, response, next) => {
-    queries.update(request.params.id, request.body).then(location => {
-        response.json({location: location[0]});
+router.put("/:id", (req, res, next) => {
+    queries.updateCoords(req.params.id, req.body).then(location => {
+        res.json({ location: location[0] });
     }).catch(next);
 });
 
