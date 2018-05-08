@@ -1,22 +1,24 @@
 # WiFinder
 
-- WiFinder is a mobile-optimized React application for locating quality free WiFi around downtown Denver.
+- WiFinder is a mobile-optimized full stack application for locating quality free WiFi around downtown Denver. WiFinder allows the user to view a list of locations offering free WiFi in order of distance from the user's location, as well as on a corresponding map. The app also allows users leave comments, or to add new locations missing from the list. Happy hunting!
 
 ### Technologies Used:
 
 - CSS
 - HTML
 - JavaScript
-- ReactJS
-- KnexJS
+- React
+- Knex
 - PostgreSQL
-- ExpressJS
+- Express
 - Google Geocode API
+- Google Maps API
+- Google Distance Matrix API
 - Heroku
 - Firebase
 - NodeJS
 
-### Deployed at: https://github.com/Chalked/wifinder-backend
+### Deployed at: https://wifinder-202815.firebaseapp.com/
 
 ### Frontend code at: https://github.com/Chalked/wifinder-frontend
 
