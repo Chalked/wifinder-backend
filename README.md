@@ -21,9 +21,7 @@
 
 - Clone this repository.
 - Make sure you have PostgreSQL installed & working on your machine. 
-- Then, run 
-    npm run setup 
-    npm start
+- In terminal, `npm run setup` and then `npm start`.
 
 ### Deployed at: https://wifinder-202815.firebaseapp.com/
 
