@@ -17,6 +17,14 @@
 - Firebase
 - NodeJS
 
+### Local Setup
+
+- Clone this repository.
+- Make sure you have PostgreSQL installed & working on your machine. 
+- Then, run 
+    npm run setup 
+    npm start
+
 ### Deployed at: https://wifinder-202815.firebaseapp.com/
 
 ### Frontend code at: https://github.com/Chalked/wifinder-frontend
